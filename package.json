@@ -1,0 +1,16 @@
+{
+  "name": "reservations",
+  "version": "1.0.0",
+  "description": "rest api for provide service to hotel managment service(SPDC Assignment_1 [IT15136916]), Good Luck (Y)",
+  "main": "server.js",
+  "scripts": {
+    "test": "test"
+  },
+  "author": "Achala Kavinda Silva",
+  "license": "ISC",
+    "dependencies": {
+        "express": "~4.0.0",
+        "mongoose": "~3.6.13",
+        "body-parser": "~1.0.1"
+    }
+}
