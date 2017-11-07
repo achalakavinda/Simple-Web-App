@@ -8,10 +8,12 @@
   },
   "author": "Achala Kavinda Silva",
   "license": "ISC",
-    "dependencies": {
-        "express": "4.0.0",
-//        "mongoose": "3.6.13",
-        "body-parser": "1.0.1",
-         "mysql":"2.15.0"
-    }
+  "dependencies": {
+    "body-parser": "1.0.1",
+    "express": "4.0.0",
+    "mongoose": "4.13.0",
+    "mysql": "2.15.0",
+    "nodemon": "1.12.1",
+    "twilio": "3.9.2"
+  }
 }

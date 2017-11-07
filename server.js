@@ -2,31 +2,33 @@
  * Created by Achala Kavinda on 10/26/2017.
  */
 
-var express = require('express');
+var express = require('express'),
+app = express(),
+port = process.env.PORT || 3000,
+mongoose = require('mongoose'),
+CustomerModel = require('./api/models/customer.model'),
+FoodModel = require('./api/models/food.model'),
+bodyParser = require('body-parser');
 
+// mongoose instance connection url connection
 
-var mql = require('./api/database/databaseConfig');
-
-var  bodyParser = require('body-parser');
-
-app = express();
-
-port = process.env.PORT || 3000;
+mongoose.Promise = global.Promise;
+mongoose.connect('mongodb://localhost/reservationdb'); 
 
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
 
-var routes = require('./api/routes/customerRoute'); //importing route
+var customerRoute = require('./api/routes/customer.route'); //importing customer api route
+var foodRoute = require('./api/routes/food.route')//importing food api route
 
-routes(app); //register the route
+customerRoute(app); //register customer api route
+foodRoute(app); //register food api route
 
-//initial app listen port
-app.listen(port, err=>{
-    if (err) {
-        console.error(err);
-        return;
-    }
-    console.log('app listening on port '+port);
+app.route('/').get(function (req,res) {
+    res.json([{status:'Success'}]);
 });
+
+app.listen(port);
+console.log('Server is up and running on http://www.localhost:' +port);

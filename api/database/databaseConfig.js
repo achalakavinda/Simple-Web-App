@@ -1,5 +1,6 @@
 /**
  * Created by AchalaKavinda on 11/6/2017.
+ * This is initial to get connect with mysql databases
  */
 
 //config mysql
