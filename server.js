@@ -8,6 +8,8 @@ port = process.env.PORT || 3000,
 mongoose = require('mongoose'),
 CustomerModel = require('./api/models/customer.model'),
 FoodModel = require('./api/models/food.model'),
+TableModel = require('./api/models/table.model'),
+UserModel = require('./api/models/user.model'),
 bodyParser = require('body-parser');
 
 // mongoose instance connection url connection

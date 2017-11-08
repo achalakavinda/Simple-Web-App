@@ -19,4 +19,4 @@ var customerSchema = new Schema({
     }  
   });
 
-  module.exports = mongoose.model('Customers', customerSchema);
+module.exports = mongoose.model('Customers', customerSchema);
