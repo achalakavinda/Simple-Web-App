@@ -2,10 +2,30 @@
  * Created by AchalaKavinda on 11/7/2017.
  */
 
+'use strict'
+
 //mongoose
-var mongoose = require('mongoose');
+var mongoose = require('mongoose'),
 //food model
-FoodModel = mongoose.model('Foods');
+FoodModel = mongoose.model('Foods'),
+foodModelJson = require('../models/food.model.json');
+
+exports.foods = function (req,res){
+    switch (req.body.type){
+        case 'breakfirst':
+            res.json(foodModelJson.breakfirst);
+        case 'lunch':
+            res.json(foodModelJson.lunch);
+        case 'dinner':
+            res.json(foodModelJson.dinner);
+        default:
+            res.json(foodModelJson);
+    }
+
+    if(req.body.type==null){
+        res.json({ststus:'bad',message:'error request'});
+    }
+};
 
 exports.getAllFood = function (req,res) {
     FoodModel.find({}, function(err, sucess) {

@@ -5,6 +5,7 @@
 'use strict';
 
 var app = angular.module('clientLogin', [], function() {});
+
 app.controller('loginController',function ($scope,$http) {
 
     $scope.lUser={};

@@ -2,7 +2,7 @@
 
 ########################################################
 
-*** Official Web Solutions Partner for Lemon Court ***
+        *** Official Web Solutions Partner ***
 
 ########################################################
 
@@ -31,13 +31,14 @@ Customize to SPDC Assignment
     <title>Welcome | Luxury Court</title>
 
     <script src="./public/js/angular.min.js"></script>
-    <script src="./public/../controllers/clientLogin.controller.js"></script>
+    <script src="./public/../controllers/store.controller.js"></script>
     <!-- Bootstrap -->
     <link href="./public/css/bootstrap.min.css" rel="stylesheet">
     <!-- Main Css -->
     <link href="./public/css/main.css"  rel="stylesheet">
     <!-- Index Css -->
     <link href="./public/css/index.css" rel="stylesheet">
+    <link href="./public/css/store.css" rel="stylesheet">
     <!-- Shake Css -->
     <link href="./public/css/shakecss.css" rel="stylesheet">
     <link href="./public/css/cloud.css" rel="stylesheet">
@@ -56,7 +57,7 @@ Customize to SPDC Assignment
     <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
 </head>
-<body ng-app="clientLogin" id="body_bg">
+<body ng-app="storeApp" id="body_bg">
 
 <nav style="border-bottom: none" id="_nav" class="navbar navbar-default navbar-fixed-top">
     <div class="container-fluid">
@@ -82,21 +83,75 @@ Customize to SPDC Assignment
 </nav>
 
 <!-- /Navigation Bar -->
-<section ng-controller="loginController" style="padding-top: 100px;padding-bottom:150px;margin-bottom:0px;background: rgba(1,50,67,0.8);color: white" id="content">
-    <p>{{ lUser | json }}</p>
-    <p>{{ rUser | json }}</p>
+<section ng-controller="storeController" style="padding-top: 100px;padding-bottom:150px;margin-bottom:0px;background: rgba(1,50,67,0.8);color: white" id="content">
     <div class="welcome">
         <div class="container">
             <div class="col-md-12">
                 <div class="welcom-text  wow slideInLeft">
                     <p class="h1">Enjoy your delicious Meals</p>
                     <img class="hr-img" src="http://www.pngmart.com/files/3/Horizontal-Line-Transparent-PNG.png">
-                    <p class="text-description">add to you food cart , by click cart icon </p>
                 </div>
             </div>
         </div>
     </div>
 
+    <div class="container wow slideInLeft">
+        <div class="col-md-6">
+            <h2>Products</h2>
+            <table class="table table-hover">
+                <thead>
+                <tr>
+
+                    <th>Name</th>
+                    <th>Image</th>
+                    <th>Price</th>
+                    <th>Transactions</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr ng-repeat="item in items">
+                    <td>{{ item.name }}</td>
+                    <td><img style="height: 50px;width: 100px" src="{{ item.img }}"></td>
+                    <td>{{ item.price | number:0 }}</td>
+                    <td>
+                        <button ng-click="addItem(item)" class="btn btn-sm btn-info">
+                            Add to cart
+                            <i class="fa fa-shopping-cart"></i>
+                        </button>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="col-md-6">
+            <h2>My Shopping Cart</h2>
+            <table class="table table-hover">
+                <thead>
+                <th>Name</th>
+                <th>Image</th>
+                <th>Price</th>
+                <th>Quantity</th>
+                </thead>
+                <tbody id="ok">
+                {{ myItems}}
+                <tr ng-repeat="myItem[0] in myItems">
+                    <td>{{ myItem.name }}</td>
+                    <td><img style="height: 50px;width: 100px" src="{{ myItem.img }}"></td>
+                    <td>$ {{ myItem.price }}</td>
+                    <td>{{ myItem.count }}</td>
+                </tr>
+                </tbody>
+            </table>
+            <span class="text-center" ng-show="myItems.length == 0">
+      Your shopping cart is empty.
+    </span>
+            <div class="clearfix"></div>
+            <span class="pull-right alert alert-success">Total Price: $ {{ !totalPrice ? "0" : totalPrice | number:0 }}</span>
+            <button ng-click="removeBasket()" ng-show="myItems.length > 0" class="pull-left alert alert-danger">Empty your cart</button>
+        </div>
+
+    </div>
 </section>
 
 

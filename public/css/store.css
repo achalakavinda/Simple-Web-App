@@ -1,0 +1,8 @@
+/**
+ * Created by AchalaKavinda on 12/17/2017.
+ */
+
+
+table tr:hover {
+    background-color: rgba(0,0,0,0); /* Assuming you want the hover color to be white */
+}
