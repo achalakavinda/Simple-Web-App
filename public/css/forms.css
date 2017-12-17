@@ -1,0 +1,31 @@
+.form-group {
+    
+}
+
+.bookFrm{
+    padding-top:20px;
+}
+
+.form-group select{
+    padding: 5px 8px;
+    border-radius: 0px;
+    border: none;
+    box-shadow: none;
+    background: rgba(238, 238, 238,0.9);
+    background-image: none;
+    -webkit-appearance: none;
+}
+
+.bookFrm  input{
+    padding: 5px 8px;
+    border-radius: 0px;
+    border: none;
+    box-shadow: none;
+    background: rgba(238, 238, 238,0.9);
+    background-image: none;
+    -webkit-appearance: none;
+}
+
+.form-group select:focus {
+    outline: none;
+}

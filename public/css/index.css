@@ -1,0 +1,194 @@
+.welcome{
+    padding: 50px 0px 50px 0px;
+}
+.welcom-text{
+    text-align: center;
+}
+.welcom-text >.h2{
+    font-size: 150%;
+    margin-bottom: 0px;
+}
+.welcom-text >.h1{
+    margin-top: 10px;
+    font-size: 250%;
+}
+
+#hotels-block{
+    
+}
+.hotels-header{
+    padding-top: 50px;
+    padding-bottom: 50px;
+    width: auto;
+    
+}
+.hotel-container{
+    position: relative;
+    background: rgba(255,255,255,1);
+    overflow: hidden;
+    z-index: 1;
+    margin-top: 10px;
+}
+.img-wrp>img{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    transition: all ease 1s;
+}
+
+.hotel-container:hover .img-wrp>img{
+    width: 120%;
+    height: 120%;
+    transition: all ease 1s;
+}
+.hotel-container:hover .hotel-body>.wrapper{
+    background-color: rgba(0,0,0,0.8);
+     transition: all ease 1s;
+}
+.hotel-body{
+    position: relative;
+    width: 100%;
+    padding: 10px;
+}
+
+.hotel-body>.wrapper{
+    position: relative;
+    min-height:50vh;
+    background-color: rgba(0,0,0,0.5);
+    transition: all ease 1s;
+    text-align: center;
+    padding-top: 10vh;
+    padding-bottom: 20px;
+}
+.hotel-body>.wrapper>p{
+    margin: 0px auto;
+    max-width: 80%;
+    font-size: 120%;
+    color: white;
+}
+
+#gallery{
+    background: rgba(0,0,0,0.1);
+}
+
+
+.gallery-wrapper{
+    position: relative;
+    width: 100%;
+    padding: 50px 0px 50px;
+}
+
+.gallery-wrapper .description{
+    padding-left: 20px;
+    
+    text-align: center;
+}
+
+.gallery-wrapper .description>.hr-img{
+    width: 70%;
+    height: 30px;
+    margin-top: -10px;
+}
+
+.gallery-wrapper .description>.h1{
+    margin-bottom: 20px;
+}
+
+.des{
+    text-align: justify;
+    font-size: 120%;
+    width: 80%;
+}
+.widget{
+    margin-top: 50px;
+    text-align: left;
+}
+.gallery-wrapper .description>.widget>.btn-my{
+    background: black;
+    color: white;
+}
+
+.gallery-box{
+    margin-top: 10px;
+}
+
+
+.gallery-box>.row>.col-md-6{
+    overflow: hidden;
+    padding:2px;
+    height:250px;
+}
+
+.gallery-box>.row>.col-md-6>.gallery-wrap{
+    width: 100%;
+    height: 100%;
+    padding:10px;
+}
+.gallery-box>.row>.col-md-6>.gallery-wrap>.gallery-wrap-black{
+    background: rgba(0,0,0,0.4);
+    width: 100%;
+    height: 100%;
+    transition: all ease 1s;
+    text-align: center;
+    padding-top:100px;
+}
+.gallery-box>.row>.col-md-6>.gallery-wrap:hover .gallery-wrap-black{   
+    border: 1px solid white;
+     background: rgba(0,0,0,0.6);
+    transition: all ease 1s;
+}
+
+.gallery-box>.row>.col-md-6>.gallery-wrap:hover .view-p{
+    font-size: 200%;
+    margin-top: -12px;
+}
+.view-p{
+    font-size: 150%;
+    color: white;
+    font-family:serif;
+    transition: all ease 1s;
+}
+
+.btn-view{
+    border: 1px solid white;
+    padding: 10px 20px 10px 20px;
+    color: white;
+    transition: all ease 1s;
+}
+
+#book{
+    margin-top: -50px;
+    margin-bottom: -20px;    
+    
+}
+#book>.book-wrapper{
+    position: relative;
+    overflow: hidden;
+    
+}
+.book-wrapper{
+    width: 100%;    
+    padding-top:100px;
+    padding-bottom:100px;
+    
+}
+.book-wrapper>.container{
+    background-color: rgba(255,255,255,0.3);
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+#location{
+    width: 100%;
+    padding-top: 60px;
+    padding-bottom: 60px;
+}
+.map_wrap{
+    padding: 5px;
+    border: 1px solid black;
+}
+#map{
+    position: relative;
+    width: 100%;
+    height: 90vh;
+}

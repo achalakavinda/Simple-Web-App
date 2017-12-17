@@ -1,0 +1,250 @@
+<!--
+
+########################################################
+
+*** Official Web Solutions Partner for Lemon Court ***
+
+########################################################
+
+ Designed and Developed by Achala Kavinda
+
+########################################################
+
+Last Updated 2017 November 01
+
+########################################################
+
+Customize to SPDC Assignment
+
+########################################################
+
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="shortcut icon" href="https://scontent.fcmb1-1.fna.fbcdn.net/v/t1.0-9/15400491_251643425249946_3284517377572385452_n.png?oh=1eb6d14669315e1c0b0cba66b6f3ae0d&oe=5A62D38B" type="image/x-icon" />
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <title>Welcome || Lemon Court</title>
+
+    <script src="./public/js/angular.min.js"></script>
+    <script src="./public/../controllers/clinetLogin.controller.js"></script>
+    <!-- Bootstrap -->
+    <link href="./public/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Main Css -->
+    <link href="./public/css/main.css"  rel="stylesheet">
+    <!-- Index Css -->
+    <link href="./public/css/index.css" rel="stylesheet">
+    <!-- Shake Css -->
+    <link href="./public/css/shakecss.css" rel="stylesheet">
+    <link href="./public/css/cloud.css" rel="stylesheet">
+    <link href="./public/css/animate.css" rel="stylesheet">
+    <link href="./public/css/font-awesome.css" rel="stylesheet">
+    <link href="./public/css/forms.css" rel="stylesheet">
+    <link href="./public/css/fake.css" rel="stylesheet">
+    <link href="./public/css/login.css" rel="stylesheet">
+
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body ng-app="clientLogin" id="body_bg">
+
+<nav style="border-bottom: none" id="_nav" class="navbar navbar-default navbar-fixed-top">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#"></a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="/">Home</a></li>
+                <li><a class="active"   href="/login">login</a></li>
+            </ul>
+        </div><!-- /.navbar-collapse -->
+    </div><!-- /.container-fluid -->
+</nav>
+
+<!-- /Navigation Bar -->
+<section ng-controller="loginController" style="padding-top: 100px;padding-bottom:150px;margin-bottom:0px;background: rgba(1,50,67,0.8);color: white" id="content">
+    <p>{{ lUser | json }}</p>
+    <p>{{ rUser | json }}</p>
+    <div class="welcome">
+        <div class="container">
+            <div class="col-md-12">
+                <div class="welcom-text  wow slideInLeft">
+                    <p class="h2">Luxury Restaurant in Sri Lanka</p>
+                    <p class="h1">Welcome to Luxury Court</p>
+                    <img class="hr-img" src="http://www.pngmart.com/files/3/Horizontal-Line-Transparent-PNG.png">
+                    <p class="text-description">A warm welcome to our Restaurant reservation system , In order to make a reservation you have to log in to the system ,<br/> Still Not a member of our reservation system , you can join with us by simply fill registration form bellow.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div  class="container wow slideInLeft">
+        <div class="row">
+            <div class="col-md-6 col-md-offset-3">
+                <div class="panel panel-login">
+                    <div class="panel-heading">
+                        <div class="row">
+                            <div class="col-xs-6">
+                                <a href="#" class="active" id="login-form-link">Login</a>
+                            </div>
+                            <div class="col-xs-6">
+                                <a href="#" id="register-form-link">Register</a>
+                            </div>
+                        </div>
+                        <hr>
+                    </div>
+                    <div class="panel-body">
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <div id="login-form" action="https://phpoll.com/login/process" method="post" role="form" style="display: block;">
+                                    <div class="form-group">
+                                        <input type="text" name="lnumber" id="lnumber" tabindex="1" class="form-control" placeholder="Contact Number" ng-model="lUser.number">
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="password" name="lpassword" id="lpassword" tabindex="2" class="form-control" placeholder="Password" ng-model="lUser.password">
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="row">
+                                            <div class="col-sm-6 col-sm-offset-3">
+                                                <button ng-click="login()" name="login-submit" id="login-submit" tabindex="4" class="form-control btn btn-login">Log In</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <br/>
+                                    </div>
+                                </div>
+                                <div id="register-form" role="form" style="display: none;">
+                                    <div class="form-group">
+                                        <input type="text" name="number" id="number" tabindex="1" class="form-control" placeholder="Contact Number" ng-model="rUser.number" >
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="text" name="Name" id="name" tabindex="1" class="form-control" placeholder="Name" ng-model="rUser.name">
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="password" name="password" id="password" tabindex="2" class="form-control" placeholder="Password" ng-model="rUser.password">
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="password" name="rpassword" id="rpassword" tabindex="2" class="form-control" placeholder="Re-Password" ng-model="rUser.rpassword">
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="row">
+                                            <div class="col-sm-6 col-sm-offset-3">
+                                                <button ng-click="register()" name="register-submit" id="register-submit" tabindex="4" class="form-control btn btn-register">Register Now</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<!-- Include all compiled plugins (below), or include individual files as needed -->
+<script src="./public/js/bootstrap.min.js"></script>
+<!-- Main js -->
+<script src="./public/js/main.js" type="text/javascript"></script>
+<script src="./public/js/login.js" type="text/javascript"></script>
+<!-- Backstretch js -->
+<script src="./public/js/backstretch.js" type="text/javascript"></script>
+<script src="./public/js/smooth-scroll.js"></script>
+<script src="./public/js/wow.js"></script>
+<script async defer
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBNkDdXX_hU9XD_ye9qmY333wo4sNYaVfY&callback=initMap">
+</script>
+
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<script src="js/fake.js"></script>
+
+<script>
+
+    var map;
+
+    // A $( document ).ready() block.
+    $( document ).ready(function() {
+        $('#broomtype').attr("disabled", "disabled");
+        $('#rtViev').hide();
+
+        $('#bpackage').change(function(){
+            if($('#bpackage').val()==='No Package'){
+                $('#broomtype').removeAttr("disabled");
+                $('#rtViev').show(1000);
+            }else{
+                $('#broomtype').attr("disabled", "disabled");
+                $('#rtViev').hide(1000);
+            }
+        });
+
+
+
+    });
+
+
+
+
+    new WOW().init();
+    var scroll = new SmoothScroll('a[href*="#"]');
+
+    $("#body_bg").backstretch([
+        "./public/img/pic/11.png"
+        , "./public/img/pic/30.png"
+        , "./public/img/pic/3.png"
+        , "./public/img/pic/6.png"
+        , "./public/img/pic/15.png"
+        , "./public/img/pic/17.png"
+        , "./public/img/pic/31.png"
+        , "./public/img/pic/32.png"
+    ], {duration: 3000, fade: 750});
+
+      function checkScroll(){
+        var startY = $('.navbar').height() * 1; //The point where the navbar changes in px
+        if($(window).scrollTop() > startY){
+            $('.navbar').addClass("scrolled");
+            $('.navbar').removeClass("navigation");
+        }else{
+            $('.navbar').removeClass("scrolled");
+            $('.navbar').addClass("navigation");
+        }
+    }
+
+    if($('.navbar').length > 0){
+        $(window).on("scroll load resize", function(){
+            checkScroll();
+        });
+    }
+
+    var navMain = $(".navbar-collapse"); // avoid dependency on #id
+    // "a:not([data-toggle])" - to avoid issues caused
+    // when you have dropdown inside navbar
+    navMain.on("click", "a:not([data-toggle])", null, function () {
+        navMain.collapse('hide');
+    });
+</script>
+</body>
+</html>

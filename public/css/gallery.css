@@ -1,0 +1,85 @@
+    /*   Comic strip jumpy style gallery   */
+* {
+  font-family: Arial, sans-serif;
+}
+#gallery {
+    padding-top: 50px;
+}
+.text-view {
+    text-align: center;
+    padding: 0px 20px 20px 20px;
+}
+.boxframe1 {
+  width:530px;
+  height: 100px;
+  display:inline-block;
+  -webkit-transition:all 1s;
+}
+
+.openFrame {
+  height: 200px;
+  width: 100%;
+}
+
+.size1, .size2, .size3 {
+  position:relative;
+  float:left;
+  overflow:hidden;
+  height: 100%;
+  width: 50px;
+  margin:3px;
+  background: #ccc;
+  -webkit-transition:all 1s;
+}
+
+.gallimg {
+  height:100%;
+  position: relative;
+  opacity: 0.2;
+   -webkit-transition:all 1s;
+   -webkit-filter: grayscale(100%); 
+}
+
+.fullshine {
+  opacity: 1;
+  -webkit-filter: grayscale(0%); 
+}
+
+.shinewidth {
+  /*width: inherit;*/
+}
+
+
+.lastimg, .firstimg {
+  width: 0px !important;
+  opacity: 0;
+  margin: 0;
+}
+
+.fixRightBox {
+  position:fixed;
+  right:20px;
+  top:50px;
+}
+
+.fixLeftBox {
+  position:fixed;
+  left:20px;
+  top:50px;
+}
+
+a x{
+  font-family: Arial, sans-serif;
+  color:#fff;
+  font-size:14px;
+  background:#7AB2FF;
+  padding:5px 12px;
+  display:block;
+  margin:5px 2px;
+  border-radius:4px;
+  text-decoration:underline;
+}
+
+a x:hover {
+  cursor:pointer;
+}
