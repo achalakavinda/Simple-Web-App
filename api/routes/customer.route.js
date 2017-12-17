@@ -10,9 +10,13 @@ module.exports = function (app) {
   var customerController = require ('../controllers/customer.controller');
   var smsController = require ('./../controllers/sms.controller')
     //customer routes
-    app.route('/api/customer')
-        .get(customerController.getAllCustomer)
-        .post(customerController.addCustomer);
+    app.route('/api/customer').get(customerController.getAllCustomer);
+  //customer registration route
+    app.route('/api/customer/register').post(customerController.registerCustomer);
+    //customer auth route
+    app.route('/api/customer/auth').post(customerController.authCustomer);
+
+    //sms sending test route
     app.route('/sms/send').get(
         smsController.sendMessage
     );

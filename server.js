@@ -27,18 +27,19 @@ app.use(bodyParser.urlencoded({ extended: true })); //to get information in html
 app.use(bodyParser.json());
 
 //start server
-app.listen(port, () => {
-    console.log('server started on port ' + port);
-});
 
+//passport middleware
+require('./config/passport')(passport);
+app.use(passport.initialize());
+app.use(passport.session());
 
 app.use('/public', express.static(__dirname +'/public'));
 app.use('/modules', express.static(__dirname + '/modules'));
 app.use('/controllers', express.static(__dirname + '/controllers'));
-//
-//
-// var customerRoute = require('./api/routes/customer.route'); //importing customer api route [PATH/api/customer]
-// var foodRoute = require('./api/routes/food.route') //importing food api route [PATH/api/food]
+
+
+var customerRoute = require('./api/routes/customer.route'); //importing customer api route [PATH/api/customer]
+var foodRoute = require('./api/routes/food.route') //importing food api route [PATH/api/food]
 
 
 
@@ -49,6 +50,9 @@ app.route('/').get(function (req,res){
 app.route('/login').get(function (req,res){
     res.sendfile(__dirname + '/public/login.html');
 });
+app.route('/store').get(function (req,res){
+    res.sendfile(__dirname + '/public/store.html');
+});
 
 
 customerRoute(app); //register customer api route
@@ -58,5 +62,6 @@ app.route('/').get(function (req,res) {
     res.json([{status:'Success'}]);
 });
 
-app.listen(port);
-console.log('Server is up and running on http://www.localhost:' +port);
+app.listen(port, () => {
+    console.log('Server is up and running on http://www.localhost:' +port);
+});
