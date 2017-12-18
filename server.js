@@ -10,6 +10,8 @@ mongoose = require('mongoose'),
 CustomerModel = require('./api/models/customer.model'),
 FoodModel = require('./api/models/food.model'),
 TableModel = require('./api/models/table.model'),
+RervationsModel = require('./api/models/reservation.model'),
+CartModel = require('./api/models/cart.model'),
 bodyParser = require('body-parser');
 
 // mongoose instance connection url connection
