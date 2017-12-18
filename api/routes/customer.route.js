@@ -8,7 +8,8 @@
 module.exports = function (app) {
   //require customer controller
   var customerController = require ('../controllers/customer.controller');
-  var smsController = require ('./../controllers/sms.controller')
+  var smsController = require ('./../controllers/sms.controller');
+  var paypalController = require ('./../controllers/paypal.controller');
     //customer routes
     app.route('/api/customer').get(customerController.getAllCustomer);
   //customer registration route
@@ -17,7 +18,12 @@ module.exports = function (app) {
     app.route('/api/customer/auth').post(customerController.authCustomer);
 
     //sms sending test route
-    app.route('/sms/send').get(
-        smsController.sendMessage
+    // app.route('/sms/send').get(
+    //     smsController.sendMessage
+    // );
+
+    //payment
+    app.route('/api/paymet').get(
+        paypalController.payment,[]
     );
 };

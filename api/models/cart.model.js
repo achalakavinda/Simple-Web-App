@@ -9,6 +9,10 @@ var Schema = mongoose.Schema;
 
 
 var cartSchema = new Schema({
+    id: {
+        type: String,
+        required: 'require id'
+    },
     name: {
         type: String,
         required: 'require user'

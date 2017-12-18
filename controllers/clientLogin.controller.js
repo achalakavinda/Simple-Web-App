@@ -23,6 +23,9 @@ app.controller('loginController',function ($scope,$http,$location) {
         }).then(function (response) {
             $scope.lUser = response.data.token;
             sessionStorage.userToken=response.data.token;
+            sessionStorage.name=response.data.customer.name;
+            sessionStorage.number=response.data.customer.number;
+            sessionStorage.id=response.data.customer.id;
             window.location.replace("/store");
         }, function (response) {
             $scope.lUser = response.statusText;

@@ -2,7 +2,7 @@
  * Created by AchalaKavinda on 12/18/2017.
  */
 
-module.exports = [
+module.exports.table = [
     {id:1,name:'Table 1'},
     {id:2,name:'Table 2'},
     {id:3,name:'Table 3'},

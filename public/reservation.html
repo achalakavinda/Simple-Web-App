@@ -121,7 +121,7 @@ Customize to SPDC Assignment
                                 <div class="form-group">
                                     <label>Table</label>
                                     <select name="bpackage" class="form-control"  ng-model="reservation.room" id="bpackage">
-                                        <option value="Honeymoon Experience"> Honeymoon Experience </option>
+                                        <option ng-repeat="table in tables" value="{{ table.id }}"> {{ table.name}} </option>
                                     </select>
                                 </div>
                             </div>
@@ -129,7 +129,7 @@ Customize to SPDC Assignment
                                 <div class="form-group">
                                     <label>Guests</label>
                                     <select name="bguests" class="form-control" id="bguests"  ng-model="reservation.guest">
-                                        <option value="0"> 1 </option>
+                                        <option ng-repeat="myItem in myItems" value="0"> 1 </option>
                                         <option value="1"> 2 </option>
                                         <option value="2"> 3 </option>
                                         <option value="3"> 4 </option>

@@ -25,6 +25,9 @@ app.controller('storeController', function($scope,$http) {
 
     $scope.out = function () {
         sessionStorage.userToken='';
+        sessionStorage.name='';
+        sessionStorage.number='';
+        sessionStorage.id='';
         window.location.replace("/login");
     };
 
@@ -38,11 +41,21 @@ app.controller('storeController', function($scope,$http) {
         if(newItem.qty==null){
             newItem.qty=1;
         }
-        $scope.myItems.push(newItem);
 
+        var dublicate = false;
+        for( var i = 0; i < $scope.myItems.length; i++ ) {
+            if($scope.myItems[i].name==newItem.name){
+                dublicate=true;
+            }
+        }
 
-        // updatePrice();
+       if(!dublicate){
+           $scope.myItems.push(newItem);
+       }
+        updatePrice();
     };
+
+
 
     $scope.fillFood = function (type) {
         $scope.items = [];
@@ -50,37 +63,71 @@ app.controller('storeController', function($scope,$http) {
     };
 
     $scope.buyCart = function () {
-      console.log($scope.myItems);
+        console.log(sessionStorage.user[0]);
+        swal({
+                title: sessionStorage.name + " Are you sure?",
+                text: "Do you want to continue for the online paypal payment method",
+                type: "warning",
+                showCancelButton: true,
+                confirmButtonClass: "btn-danger",
+                confirmButtonText: "Yes",
+                closeOnConfirm: false
+            },
+            function(){
+                swal("Done!", "Your imaginary file has been deleted.", "success");
+            });
     };
 
-    //fiyatı güncelle (totalPrice) - update price
-    var updatePrice = function() {
-        var totalPrice = 0;
-        for( var i = 0; i < $scope.myItems.length; i++ ) {
-            totalPrice += ($scope.myItems[i].count) * ($scope.myItems[i].price);
+    $scope.orderCart = function () {
+        if($scope.myItems.length>0){
+            swal({
+                    title: "Are you sure?",
+                    text: "Do You want to order this now",
+                    type: "warning",
+                    showCancelButton: true,
+                    confirmButtonClass: "btn-danger",
+                    confirmButtonText: "Yes",
+                    closeOnConfirm: false
+                },addSchema);
+        }else{
+            alert('Empty Cart')
         }
 
+
+    };
+
+    var addSchema = function () {
+        var data ='[';
+        for( var i = 0; i < $scope.myItems.length; i++ ) {
+            data+='{name:"'+$scope.myItems[i].name+'",img:"'+$scope.myItems[i].img+'",price:"'+$scope.myItems[i].price+'",qty:"'+$scope.myItems[i].qty+'"},';
+        }
+        data=data+']';
+        $http.post('http://www.localhost:3000/api/cart',{
+            id:sessionStorage.id,
+            name:sessionStorage.name,
+            number:sessionStorage.number,
+            cart:data
+        }).then(function (response) {
+            swal("Done!", "You Order placed successfully.", "success");
+            setTimeout(function () {
+                window.location.replace("/store");
+            },1000)
+            }, function (response) {
+        });
+    };
+
+    var updatePrice = function() {//price upadte
+        var totalPrice = 0;
+        for( var i = 0; i < $scope.myItems.length; i++ ) {
+            totalPrice += ($scope.myItems[i].qty) * ($scope.myItems[i].price);//generate total amount
+        }
         $scope.totalPrice = totalPrice;
     };
 
-    //sepeti boşalt - empty your cart
+    //remove basket
     $scope.removeBasket = function() {
         $scope.myItems.splice(0, $scope.myItems.length);
         updatePrice();
     };
 
-});
-
-app.filter('reverse', function() {
-    return function(items) {
-        var x = items.slice().reverse();
-        if( items.length > 1 ) {
-            angular.element('#ok tr').css('background','');
-            angular.element('#ok tr').filter(':first').css('background','lightyellow');
-            setTimeout(function() {
-                angular.element('#ok tr') .filter(':first').css('background','');
-            }, 500);
-        }
-        return x;
-    };
 });

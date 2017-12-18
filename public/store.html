@@ -47,6 +47,7 @@ Customize to SPDC Assignment
     <link href="./public/css/forms.css" rel="stylesheet">
     <link href="./public/css/fake.css" rel="stylesheet">
     <link href="./public/css/login.css" rel="stylesheet">
+    <link href="./public/css/sweetalert.css" rel="stylesheet">
 
     <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 
@@ -133,7 +134,7 @@ Customize to SPDC Assignment
         </div>
 
         <div class="col-md-6">
-            <h2>My Shopping Cart</h2>
+            <h2>My Shopping Cart <span>Total : {{ totalPrice}}</span></h2>
             <table class="table table-hover">
                 <thead>
                 <th>Name</th>
@@ -154,7 +155,8 @@ Customize to SPDC Assignment
       Your shopping cart is empty.
     </span>
             <div class="clearfix"></div>
-            <button ng-click="buyCart()"  ng-show="myItems.length > 0" class="pull-right btn btn-danger">Buy</button>
+            <button style="margin-right: 5px" ng-click="buyCart()"  ng-show="myItems.length > 0" class="pull-right btn btn-danger">pay now ( {{myItems.length}} )</button>
+            <button ng-click="orderCart()"  ng-show="myItems.length > 0" class="pull-right btn btn-danger">order( {{myItems.length}} )</button>
             <button ng-click="removeBasket()" ng-show="myItems.length > 0" class="pull-left alert alert-danger">Empty your cart</button>
         </div>
 
@@ -178,7 +180,7 @@ Customize to SPDC Assignment
 </script>
 
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-<script src="js/fake.js"></script>
+<script src="./public/css/sweetalert.js"></script>
 
 <script>
 

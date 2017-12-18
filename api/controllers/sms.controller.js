@@ -19,7 +19,7 @@ function sendMsg() {
         .create({
             to: '+94773584572',
             from: '+15733843180',
-            body: 'Sms Validation',
+            body: 'This sms for the verification for you table booking on 12/30/2017 12;05 AM, Table #no:Table 2, Guests:4',
         },function (err,message) {
             console.log(err);
         });
