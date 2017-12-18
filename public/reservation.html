@@ -31,7 +31,7 @@ Customize to SPDC Assignment
     <title>Welcome | Luxury Court</title>
 
     <script src="./public/js/angular.min.js"></script>
-    <script src="./public/../controllers/store.controller.js"></script>
+    <script src="./public/../controllers/reservation.controller.js"></script>
     <!-- Bootstrap -->
     <link href="./public/css/bootstrap.min.css" rel="stylesheet">
     <!-- Main Css -->
@@ -57,7 +57,7 @@ Customize to SPDC Assignment
     <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
 </head>
-<body ng-app="storeApp"  ng-controller="storeController" id="body_bg">
+<body ng-app="reservationApp"  ng-controller="reservationController" id="body_bg">
 
 <nav style="border-bottom: none" id="_nav" class="navbar navbar-default navbar-fixed-top">
     <div class="container-fluid">
@@ -76,7 +76,7 @@ Customize to SPDC Assignment
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav navbar-right">
                 <li><a href="/">Home</a></li>
-                <li><a href="reservation">Reservation</a></li>
+                <li><a href="/store">Store</a></li>
                 <li><a href="#" ng-click="out()">logout</a></li>
             </ul>
         </div><!-- /.navbar-collapse -->
@@ -84,82 +84,82 @@ Customize to SPDC Assignment
 </nav>
 
 <!-- /Navigation Bar -->
-<section style="padding-top: 100px;padding-bottom:150px;margin-bottom:0px;background: rgba(1,50,67,0.8);color: white" id="content">
-    <div class="welcome">
-        <div class="container">
-            <div class="col-md-12">
-                <div class="welcom-text  wow slideInLeft">
-                    <p class="h1">Enjoy your delicious Meals</p>
-                    <img class="hr-img" src="http://www.pngmart.com/files/3/Horizontal-Line-Transparent-PNG.png">
+
+<section style="margin-top:-30px" id="book">
+    <div class="book-wrapper">
+        <div class="container  wow slideInLeft">
+            <div class="row">
+                <div class="col-md-6">
+                    <div style="text-align:center;padding-bottom:20px;" class="description ">
+                        <p  class="h2">Book Your Table Now</p>
+                        <img  class="hr-img" src="http://www.pngmart.com/files/3/Horizontal-Line-Transparent-PNG.png">
+                        <p style="text-align:left;" class="h1">Start your <br/> experience today</p>
+                        <p class="des">
+                            We are the best.<br/>
+                            Welcome to our online table reservation system.
+                        </p>
+
+                    </div>
+                </div>
+                <div class="col-md-6 form">
+                    <div id="bookForm" class="bookFrm">
+                        <div class="form-group">
+                            <label>Name</label>
+                            <input name="bname" class="form-control" ng-model="reservation.user.name" type="text">
+                        </div>
+                        <div class="form-group">
+                            <label>Email</label>
+                            <input name="bemail" class="form-control"  ng-model="reservation.user.email" type="text">
+                        </div>
+                        <div class="form-group">
+                            <label>Phone Number</label>
+                            <input name="bnumber" class="form-control"  ng-model="reservation.user.number" type="text">
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>Table</label>
+                                    <select name="bpackage" class="form-control"  ng-model="reservation.room" id="bpackage">
+                                        <option value="Honeymoon Experience"> Honeymoon Experience </option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>Guests</label>
+                                    <select name="bguests" class="form-control" id="bguests"  ng-model="reservation.guest">
+                                        <option value="0"> 1 </option>
+                                        <option value="1"> 2 </option>
+                                        <option value="2"> 3 </option>
+                                        <option value="3"> 4 </option>
+                                    </select>
+                                </div>
+                            </div>
+
+
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <label>Tine</label>
+                                    <input name="datetime"  id="datetime" class="form-control"  ng-model="reservation.datime" type="datetime-local">
+                                </div>
+                            </div>
+                        </div>
+                        <br>
+                        <div class="form-group">
+                            <div style="margin-top:-10px;text-align:right" class="widget">
+                                <button ng-click="book()"; style="background:black;color:white" class="btn-my">Book</button>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-
-    <div class="container wow slideInLeft">
-        <div class="col-md-6">
-            <div class="row">
-                <button ng-click="fillFood('breakfirst')" class="btn btn-primary">Breakfirst</button>
-                <button ng-click="fillFood('lunch')" class="btn btn-primary">Lunch</button>
-                <button ng-click="fillFood('dinner')" class="btn btn-primary">Dinner</button>
-            </div>
-            <br/>
-            <table class="table table-hover">
-                <thead>
-                <tr>
-
-                    <th>Name</th>
-                    <th>Image</th>
-                    <th>Price</th>
-                    <th>Qty</th>
-                    <th>Transactions</th>
-                </tr>
-                </thead>
-                <tbody>
-                <tr ng-repeat="item in items">
-                    <td>{{ item.name }}</td>
-                    <td><img style="height: 50px;width: 100px" src="{{ item.img }}"></td>
-                    <td>{{ item.price | number:0 }}</td>
-                    <td><input style="background:rgba(0,0,0,0);color: black" min="1" ng-model="item.qty" type="number"  value="1"></td>
-                    <td>
-                        <button ng-click="addItem(item)" class="btn btn-sm btn-info">
-                            Add to cart
-                            <i class="fa fa-shopping-cart"></i>
-                        </button>
-                    </td>
-                </tr>
-                </tbody>
-            </table>
-        </div>
-
-        <div class="col-md-6">
-            <h2>My Shopping Cart</h2>
-            <table class="table table-hover">
-                <thead>
-                <th>Name</th>
-                <th>Image</th>
-                <th>Price</th>
-                <th>Quantity</th>
-                </thead>
-                <tbody id="ok">
-                <tr ng-repeat="myItem in myItems">
-                    <td>{{ myItem.name }}</td>
-                    <td><img style="height: 50px;width: 100px" src="{{ myItem.img }}"></td>
-                    <td>$ {{ myItem.price }}</td>
-                    <td>{{ myItem.qty }}</td>
-                </tr>
-                </tbody>
-            </table>
-            <span class="text-center" ng-show="myItems.length == 0">
-      Your shopping cart is empty.
-    </span>
-            <div class="clearfix"></div>
-            <button ng-click="buyCart()"  ng-show="myItems.length > 0" class="pull-right btn btn-danger">Buy</button>
-            <button ng-click="removeBasket()" ng-show="myItems.length > 0" class="pull-left alert alert-danger">Empty your cart</button>
-        </div>
-
-    </div>
 </section>
+
 
 
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
@@ -181,31 +181,6 @@ Customize to SPDC Assignment
 <script src="js/fake.js"></script>
 
 <script>
-
-    var map;
-
-    // A $( document ).ready() block.
-    $( document ).ready(function() {
-        $('#broomtype').attr("disabled", "disabled");
-        $('#rtViev').hide();
-
-        $('#bpackage').change(function(){
-            if($('#bpackage').val()==='No Package'){
-                $('#broomtype').removeAttr("disabled");
-                $('#rtViev').show(1000);
-            }else{
-                $('#broomtype').attr("disabled", "disabled");
-                $('#rtViev').hide(1000);
-            }
-        });
-
-
-
-    });
-
-
-
-
     new WOW().init();
     var scroll = new SmoothScroll('a[href*="#"]');
 

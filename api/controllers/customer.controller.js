@@ -68,7 +68,7 @@ exports.authCustomer = function (req,res){
             });
             res.json({
                 status:'ok',
-                token:token,
+                token: 'JWT '+token,
                 type:'JWT',
                 customer:{
                     id:user.id,

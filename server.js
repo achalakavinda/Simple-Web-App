@@ -53,6 +53,18 @@ app.route('/login').get(function (req,res){
 app.route('/store').get(function (req,res){
     res.sendfile(__dirname + '/public/store.html');
 });
+app.route('/reservation').get(function (req,res){
+    res.sendfile(__dirname + '/public/reservation.html');
+});
+
+function checkAuthentication(req,res,next){
+    if(req.isAuthenticated()){
+        //if user is looged in, req.isAuthenticated() will return true
+        next();
+    } else{
+        res.redirect("/login");
+    }
+}
 
 
 customerRoute(app); //register customer api route

@@ -6,7 +6,11 @@
 
 var app = angular.module('clientLogin', [], function() {});
 
-app.controller('loginController',function ($scope,$http) {
+app.controller('loginController',function ($scope,$http,$location) {
+
+    if(sessionStorage.userToken){
+        window.location.replace("/store");
+    }
 
     $scope.lUser={};
     $scope.rUser={};
@@ -17,7 +21,9 @@ app.controller('loginController',function ($scope,$http) {
                     password:$scope.lUser.password
 
         }).then(function (response) {
-            $scope.lUser = response.data;
+            $scope.lUser = response.data.token;
+            sessionStorage.userToken=response.data.token;
+            window.location.replace("/store");
         }, function (response) {
             $scope.lUser = response.statusText;
         });
