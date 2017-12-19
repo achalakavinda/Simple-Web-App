@@ -45,6 +45,8 @@ var foodRoute = require('./api/routes/food.route'); //importing food api route [
 var reservationRoute = require('./api/routes/reservation.route'); //importing reservation api route [PATH/api/reservation]
 var cartRoute = require('./api/routes/cart.route') //importing cart api route [PATH/api/cart]
 var tableRoute = require('./api/routes/table.route') //importing table api route [PATH/api/cart]
+var mailRoute = require('./api/routes/mail.route') //importing table api route [PATH/api/mail]
+var paymentDummyRoute = require('./api/routes/payemt.gateway.route') //importing table api route [PATH//api/payment/gateway/stimulate]
 
 
 
@@ -77,6 +79,8 @@ foodRoute(app); //register food api route
 reservationRoute(app); //reservation api route
 cartRoute(app); //cart api route
 tableRoute(app); //cart api route
+mailRoute(app); //mail api route
+paymentDummyRoute(app); //mail api route
 
 app.route('/').get(function (req,res) {//base route if any are not working
     res.json([{status:'Success'}]);

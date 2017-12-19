@@ -10,8 +10,39 @@ app.controller('storeController', function($scope,$http) {
     }else{
         window.location.replace("/login");
     }
+
+    var itemsList=[];
+
+
     $scope.items = [];
     getfoods('breakfirst');
+
+    var json = {
+        "intent": "sale",
+        "payer": {
+            "payment_method": "paypal"
+        },
+        "redirect_urls": {
+            "return_url": "http://www.localhost:3000/store",
+            "cancel_url": "http://www.localhost:3000/store"
+        },
+        "transactions": [{
+            "item_list": {
+                "items": [{
+                    "name": "item",
+                    "sku": "item",
+                    "price": "1.00",
+                    "currency": "USD",
+                    "quantity": 1
+                }]
+            },
+            "amount": {
+                "currency": "USD",
+                "total": "1.00"
+            },
+            "description": "Payment Description."
+        }]
+    };
 
     function getfoods(value) {
         $http.post('http://www.localhost:3000/api/food/json',{
@@ -63,19 +94,36 @@ app.controller('storeController', function($scope,$http) {
     };
 
     $scope.buyCart = function () {
-        console.log(sessionStorage.user[0]);
-        swal({
-                title: sessionStorage.name + " Are you sure?",
-                text: "Do you want to continue for the online paypal payment method",
-                type: "warning",
-                showCancelButton: true,
-                confirmButtonClass: "btn-danger",
-                confirmButtonText: "Yes",
-                closeOnConfirm: false
-            },
-            function(){
-                swal("Done!", "Your imaginary file has been deleted.", "success");
+
+    };
+
+    $scope.payment =function () {
+        $.LoadingOverlay("show");
+            $http.post('http://www.localhost:3000/api/payment/gateway/stimulate',{
+                number:11,
+                amount:$scope.totalPrice,
+                cvc:$scope.cvc
+            }).then(function (response) {
+                console.log(response.data);
+               console.log(response.data.status);
+                $.LoadingOverlay("hide");
+                if( response.data.status!=='ok'){
+                    setTimeout(function () {
+                        swal("Payment Error", "You has error!", "warning")
+                    },700);
+
+                }else{
+                    setTimeout(function () {
+                    swal("Payment Success!", "You has success!", "success");},700);
+                    setTimeout(function () {
+                        window.location.replace("/store");
+                    },2000);
+                }
+            }, function (response) {
+               alert('errr');
+                $.LoadingOverlay("hide");
             });
+
     };
 
     $scope.orderCart = function () {

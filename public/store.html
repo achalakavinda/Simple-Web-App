@@ -155,13 +155,80 @@ Customize to SPDC Assignment
       Your shopping cart is empty.
     </span>
             <div class="clearfix"></div>
-            <button style="margin-right: 5px" ng-click="buyCart()"  ng-show="myItems.length > 0" class="pull-right btn btn-danger">pay now ( {{myItems.length}} )</button>
+            <button style="margin-right: 5px"  data-toggle="modal" data-target=".bs-example-modal-lg"  ng-show="myItems.length > 0" class="pull-right btn btn-danger">pay now ( {{myItems.length}} )</button>
             <button ng-click="orderCart()"  ng-show="myItems.length > 0" class="pull-right btn btn-danger">order( {{myItems.length}} )</button>
             <button ng-click="removeBasket()" ng-show="myItems.length > 0" class="pull-left alert alert-danger">Empty your cart</button>
         </div>
 
     </div>
 </section>
+
+<div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title"><b><span style="font-size: 150%;">Price :{{ totalPrice}}</span></b></h4>
+            </div>
+
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-md-6">
+                        <h3>Paypal Payemnt</h3>
+
+                        <hr/>
+                        <a href=""><img style="width: 200px;height: 100px" src="https://i.stack.imgur.com/XFEHO.png"></a>
+                    </div>
+
+                    <div class="col-md-6">
+                        <h3>Visa Payment</h3>
+                        <hr/>
+                        <div>
+                            <div class="form-group">
+                                <label>Name</label>
+                                <input type="text" class="form-control" ng-model="name" placeholder="Name">
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label>Card Number</label>
+                                        <input type="text" class="form-control" ng-model="card" placeholder="Card Number">
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label>CVC </label>
+                                        <input type="text" class="form-control"  ng-model="cvc" placeholder="cvc">
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label>Amount </label>
+                                        <input type="text" class="form-control" disabled ng-model="totalPrice" placeholder="Card Number">
+                                    </div>
+                                </div>
+                            </div>
+                            <h6>* this is only a dummy  call to api route [path/api/api/payment/gateway/stimulate/]</h6>
+                            <button ng-click="payment()"  class="btn btn-danger">Pay</button>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+
+
+        </div>
+    </div>
+</div>
+
 
 
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
@@ -181,6 +248,9 @@ Customize to SPDC Assignment
 
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 <script src="./public/css/sweetalert.js"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/gasparesganga-jquery-loading-overlay@1.5.4/src/loadingoverlay.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gasparesganga-jquery-loading-overlay@1.5.4/extras/loadingoverlay_progress/loadingoverlay_progress.min.js"></script>
 
 <script>
 

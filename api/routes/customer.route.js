@@ -18,12 +18,12 @@ module.exports = function (app) {
     app.route('/api/customer/auth').post(customerController.authCustomer);
 
     //sms sending test route
-    // app.route('/sms/send').get(
-    //     smsController.sendMessage
-    // );
+    app.route('/sms/send').post(
+        smsController.sendMessage
+    );
 
     //payment
-    app.route('/api/paymet').get(
-        paypalController.payment,[]
+    app.route('/api/payment').post(
+        paypalController.payment
     );
 };

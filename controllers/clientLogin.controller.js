@@ -6,11 +6,7 @@
 
 var app = angular.module('clientLogin', [], function() {});
 
-app.controller('loginController',function ($scope,$http,$location) {
-
-    if(sessionStorage.userToken){
-        window.location.replace("/store");
-    }
+app.controller('loginController',function ($scope,$http) {
 
     $scope.lUser={};
     $scope.rUser={};
@@ -40,8 +36,9 @@ app.controller('loginController',function ($scope,$http,$location) {
 
         }).then(function (response) {
             $scope.rUser = response.data;
+            window.location.replace("/login");
         }, function (response) {
-            $scope.rUser = response.statusText;
+
         });
     };
 
