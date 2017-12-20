@@ -12,7 +12,6 @@ var Schema = mongoose.Schema;
 var reservationSchema = new Schema({
     user: {
         type: String,
-        required: 'require user'
     },
     email: {
         type: String,

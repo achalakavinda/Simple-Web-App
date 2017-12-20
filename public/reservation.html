@@ -112,7 +112,7 @@ Customize to SPDC Assignment
                             <input name="bemail" class="form-control"  ng-model="email" type="text">
                         </div>
                         <div class="form-group">
-                            <label>Phone Number</label>
+                            <label>Phone Number **please follow format +94773584572 </label>
                             <input name="bnumber" class="form-control"  ng-model="number" type="text">
                         </div>
 
@@ -121,7 +121,7 @@ Customize to SPDC Assignment
                                 <div class="form-group">
                                     <label>Table</label>
                                     <select name="bpackage" class="form-control"  ng-model="reservation.room" id="bpackage">
-                                        <option ng-repeat="table in tables" value="{{ table.id }}"> {{ table.name}} </option>
+                                        <option ng-repeat="table in tables"  value="{{ table.id }}"> {{ table.name}} </option>
                                     </select>
                                 </div>
                             </div>
@@ -143,7 +143,7 @@ Customize to SPDC Assignment
                             <div class="col-md-12">
                                 <div class="form-group">
                                     <label>Tine</label>
-                                    <input name="datetime"  id="datetime" class="form-control"  ng-model="reservation.datime" type="datetime-local">
+                                    <input name="datetime" class="form-control"  ng-model="reservation.date" type="datetime-local">
                                 </div>
                             </div>
                         </div>

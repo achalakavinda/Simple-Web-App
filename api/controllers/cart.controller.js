@@ -12,7 +12,7 @@ var mongoose = require('mongoose'),
 //view all reservation
 exports.reservations = function (req,res){
     CartModel.find({},function (err,data) {
-        if(err) throw err;
+        if(err) res.json(err);
         res.json(data);//get cart data and forward
     })
 

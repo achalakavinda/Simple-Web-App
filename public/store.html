@@ -156,7 +156,7 @@ Customize to SPDC Assignment
     </span>
             <div class="clearfix"></div>
             <button style="margin-right: 5px"  data-toggle="modal" data-target=".bs-example-modal-lg"  ng-show="myItems.length > 0" class="pull-right btn btn-danger">pay now ( {{myItems.length}} )</button>
-            <button ng-click="orderCart()"  ng-show="myItems.length > 0" class="pull-right btn btn-danger">order( {{myItems.length}} )</button>
+            <button data-toggle="modal" data-target="#myModal" ng-show="myItems.length > 0" class="pull-right btn btn-danger">order( {{myItems.length}} )</button>
             <button ng-click="removeBasket()" ng-show="myItems.length > 0" class="pull-left alert alert-danger">Empty your cart</button>
         </div>
 
@@ -229,6 +229,61 @@ Customize to SPDC Assignment
     </div>
 </div>
 
+
+<!-- Modal -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel">Confirm Details</h4>
+            </div>
+            <div class="modal-body">
+
+                <div class="row">
+
+                    <div class="col-md-12">
+                        <div>
+                            <div class="form-group">
+                                <label>Email</label>
+                                <input type="text" class="form-control" ng-model="orderEmail" placeholder="Name">
+                            </div>
+                            <div class="form-group">
+                                <label>Number</label>
+                                <input type="text" class="form-control" ng-model="orderNumber" placeholder="Name">
+                            </div>
+
+                            <div class="form-group">
+                                <label>Amount</label>
+                                <input type="text" class="form-control" ng-model="totalPrice" disabled>
+                            </div>
+                            <h5>* Please provide number format as [+94 44 444 4444], and correct email</h5>
+                            <h6 style="color: red">** No form validation done here please make sure to use right input in this prototype</h6>
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                <button ng-click="orderCart()" type="button" class="btn btn-primary">Submit</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+<!--ng-click="orderCart()"-->
 
 
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->

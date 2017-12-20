@@ -6,6 +6,6 @@
 module.exports =  function (app) {
     var reservationController = require('./../controllers/reservation.controller');
     //reservation routes
-    app.route('/api/reservation').get(reservationController.reservations);
+    app.route('/api/reservation').get(reservationController.reservations).post(reservationController.addReservation);
 
 };

@@ -4,7 +4,13 @@
 
 module.exports =  function (app) {
     var mailController = require('./../controllers/mail.controller');
-    //table routes
+    //mail route
     app.route('/api/mail').post(mailController.sendMail);
+    //mail dummy route
+    app.route('/api/mail/dummy').post(function (req,res) {
+        setTimeout(function () {
+            res.json({ststus:'ok',message:'successfully send email'});
+        },1000);
+    });
 
 };

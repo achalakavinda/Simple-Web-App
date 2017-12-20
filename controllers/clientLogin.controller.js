@@ -8,6 +8,19 @@ var app = angular.module('clientLogin', [], function() {});
 
 app.controller('loginController',function ($scope,$http) {
 
+    if(sessionStorage.length>0){
+
+        if(sessionStorage.userToken===''){
+            console.log(sessionStorage.userToken+'token');
+        }else {
+            window.location.replace("/store");
+        }
+    }else {
+        window.location.replace("/login");
+    }
+
+
+
     $scope.lUser={};
     $scope.rUser={};
     //login function

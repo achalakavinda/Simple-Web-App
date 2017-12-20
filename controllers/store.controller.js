@@ -5,8 +5,12 @@
 var app = angular.module('storeApp', [], function() {});
 
 app.controller('storeController', function($scope,$http) {
-    if(sessionStorage.userToken!=''){
 
+    if(sessionStorage.length>0){
+        if(sessionStorage.userToken===''){
+            console.log(sessionStorage.userToken+'token');
+            window.location.replace("/login");
+        }
     }else{
         window.location.replace("/login");
     }
@@ -156,7 +160,33 @@ app.controller('storeController', function($scope,$http) {
             number:sessionStorage.number,
             cart:data
         }).then(function (response) {
-            swal("Done!", "You Order placed successfully.", "success");
+            swal("Done!", "You Order placed successfully.", "success");// add database succes
+
+            //send message to the customer
+            $http.post('http://www.localhost:3000/sms/send',{
+                type:'cart',
+                number:$scope.orderNumber,
+
+                price:$scope.totalPrice
+            }).then(function (respond) {
+                alert('verification sms send your number');
+                console.log(respond);
+            },function (err) {
+                console.log(err);
+                alert('cannot send message now so error has occur, but this order add to database');
+            });
+
+            //send email
+            $http.post('/api/mail/dummy',{}).then(function (respond) {
+                alert('Verified Email Send Sucessfully');
+                console.log(respond);
+            },function (err) {
+                if (err) throw  err;
+                alert('verification email cannot send');
+                console.log(err);
+            });
+
+
             setTimeout(function () {
                 window.location.replace("/store");
             },1000)
@@ -177,5 +207,7 @@ app.controller('storeController', function($scope,$http) {
         $scope.myItems.splice(0, $scope.myItems.length);
         updatePrice();
     };
+
+
 
 });

@@ -18,9 +18,18 @@ exports.reservations = function (req,res){
 };
 
 exports.addReservation = function (req,res){
-    ReservationModel.find({},function (err,data) {
-        if(err) throw err;
-        res.json(data);//get reservation data and forward
-    })
+
+    var reservation = new ReservationModel({
+        user:req.body.name,
+        email:req.body.email,
+        number:req.body.number,
+        table:req.body.table,
+        guests:req.body.guests,
+        dateTime:req.body.datetime
+    });
+    reservation.save(function (err,done) {
+        if (err) console.log(err);
+        res.json(done);
+    });
 
 };
